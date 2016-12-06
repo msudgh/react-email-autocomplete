@@ -44,11 +44,5 @@ class App extends Component {
 }
 ```
 
-
-The method accepts two parameters, `domains` and `multi-enabled`.
-
-* `domains` is an array of domains to autocomplete with, autocompleting on the first match in the array.  Typing `joe@f` in the above example will first autocomplete to `joe@foo.org`.  After the user types `joe@foob`, the field will autocomplete to `joe@foobar.com`.
-* `multi-enabled` is a boolean flag that enables the user to enter multiple emails in the field, separated by a `,` or `;`
-
 # License
 This software is released under the [**`MIT License`**](https://msudgh.mit-license.org/).
