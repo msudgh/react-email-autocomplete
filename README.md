@@ -1,28 +1,54 @@
-# Boilerplate for creating React Npm packages with ES2015
+# React Email Autocomplete
+An autocomplete React component for email fields inspired by [**`Auto-Email`**](https://github.com/chrisyuska/auto-email) JQuery plugin
 
-The package is based on [npm-base](https://github.com/kadirahq/npm-base) package by [Kadira](https://github.com/kadirahq) which is really great when you want to prepare Npm package. This one is prepared to be used as a starter point for React components which needs to be published on Npm.
+## Todo
+  - [ ] Improve the speed and performance 
 
-It includes linting with [ESLint](http://eslint.org/) and testing with [Mocha](https://mochajs.org/), [Enzyme](http://airbnb.io/enzyme/) and [JSDOM](https://github.com/tmpvar/jsdom).
+# Usage
+To use this component, you should install it by npm:
+```bash
+$ npm install react-email-autocomplete --save-dev
+```
 
-Also there is of course ES6 transpilation.
+And then use the component like bellow example(Bootstrap control):
+```javascript
+import React, { Component } from 'react';
+import Email from 'react-email-autocomplete';
 
-## Usage
+class App extends Component {
+  render() {
+    return (
+      <div className="form-group">
+        <label htmlFor="eac-input">Email address</label> 
+        <Email className="form-control" placeholder="Enter email"/>
+      </div>
+    )
+  }
+}
 
-1. Clone this repo
-2. Inside cloned repo run `npm install`
-3. If you want to run tests: `npm test` or `npm run testonly` or `npm run test-watch`. You need to write tests in `__tests__` folder. You need at least Node 4 on your machine to run tests.
-4. If you want to run linting: `npm test` or `npm run lint`. Fix bugs: `npm run lint-fix`. You can adjust your `.eslintrc` config file.
-5. If you want to run transpilation to ES5 in `dist` folder: `npm run prepublish` (standard npm hook).
+export default App;
+```
 
-## Blog post about it:
+Also you can pass a list as your custom domains:
+```javascript
+class App extends Component {
+  render() {
+    const customDomains = ['yourdomain.com', 'yourdomain2.com', 'gmail.com', 'yahoo.com']
+    return (
+      <div className="form-group">
+        <label htmlFor="eac-input">Email address</label> 
+        <Email className="form-control" placeholder="Enter email" domains={customDomains}/>
+      </div>
+    )
+  }
+}
+```
 
-- [Creating React NPM packages with ES2015](http://julian.io/creating-react-npm-packages-with-es2015/)
 
-## Also check out
+The method accepts two parameters, `domains` and `multi-enabled`.
 
-- [React Alert UI component](https://github.com/juliancwirko/react-s-alert)
-- [React project boilerplate with Webpack, HMR, React Router](https://github.com/juliancwirko/react-boilerplate)
+* `domains` is an array of domains to autocomplete with, autocompleting on the first match in the array.  Typing `joe@f` in the above example will first autocomplete to `joe@foo.org`.  After the user types `joe@foob`, the field will autocomplete to `joe@foobar.com`.
+* `multi-enabled` is a boolean flag that enables the user to enter multiple emails in the field, separated by a `,` or `;`
 
-## License
-
-MIT
+# License
+This software is released under the [**`MIT License`**](https://msudgh.mit-license.org/).
