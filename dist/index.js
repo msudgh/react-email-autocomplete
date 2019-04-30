@@ -197,7 +197,7 @@
         return _react2.default.createElement(
           'div',
           { className: 'eac-wrapper' },
-          _react2.default.createElement('input', { type: 'text', id: 'eac-input', name: this.props.name, placeholder: this.state.placeholder, onBlur: this.props.onBlur, className: this.state.class, value: this.state.value, onChange: this.handleChange, onKeyUp: this.getSuggest, ref: function ref(input) {
+          _react2.default.createElement('input', { autocapitalize: 'none', type: 'email', id: 'eac-input', name: this.props.name, placeholder: this.state.placeholder, onBlur: this.props.onBlur, className: this.state.class, value: this.state.value, onChange: this.handleChange, onKeyUp: this.getSuggest, ref: function ref(input) {
               _this2.textHandler = input;
             } })
         );
