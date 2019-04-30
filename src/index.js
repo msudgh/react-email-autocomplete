@@ -9,7 +9,7 @@ export default class Email extends Component {
       placeholder: props.placeholder,
       class: props.className,
       value: '',
-      domains: props.domains ? props.domains : ['yahoo.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'googlemail.com', 'msn.com', 'hotmail.com', 'yahoo.com', 'facebook.com', 'verizon.net', 'outlook.com', 'icloud.com'], // Include important mail services
+      domains: props.domains ? props.domains : ['yahoo.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'googlemail.com', 'msn.com', 'yahoo.com', 'facebook.com', 'verizon.net', 'outlook.com', 'icloud.com'], // Include important mail services
       suggestion: ''
     }
 
@@ -24,9 +24,13 @@ export default class Email extends Component {
     if (typeof suggest === 'undefined' || suggest.length < 1) {
       // Set value and suggestion state by every change
       this.setState({ value: emailAddress, suggestion: suggest })
+      event.target.value = emailAddress;
+      this.props.customOnChange(event)
     } else {
       // Update value state plus suggested text
       this.setState({ value: emailAddress + suggest, suggestion: suggest })
+      event.target.value = emailAddress + suggest
+      this.props.customOnChange(event)
     }
   }
   getSuggest(event) {
@@ -102,7 +106,7 @@ export default class Email extends Component {
   render() {
     return (
       <div className="eac-wrapper">
-        <input type="text" id="eac-input" placeholder={this.state.placeholder} className={this.state.class} value={this.state.value} onChange={this.handleChange} onKeyUp={this.getSuggest} ref={(input) => { this.textHandler = input } } />
+        <input type="text" id="eac-input" name={this.props.name} placeholder={this.state.placeholder} onBlur={this.props.onBlur} className={this.state.class} value={this.state.value} onChange={this.handleChange} onKeyUp={this.getSuggest} ref={(input) => { this.textHandler = input } } />
       </div>
     )
   }
