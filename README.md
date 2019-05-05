@@ -2,7 +2,7 @@
 An autocomplete React component for email fields inspired by [**`Auto-Email`**](https://github.com/chrisyuska/auto-email) JQuery plugin
 
 ## Todo
-  - [ ] Improve the speed and performance 
+  - [✔] Improve the speed and performance 
 
 # Usage
 To use this component, you should install it by npm:
@@ -42,6 +42,37 @@ class App extends Component {
     )
   }
 }
+```
+If you want to use it with [Formik](https://jaredpalmer.com/formik/docs/api/formik) you just need to add the *onChange* prop
+
+```javascript
+class App extends Component {
+  render() {
+    return (
+      <div className="form-group">
+        <label htmlFor="eac-input">Email address</label> 
+        <Formik>
+          {(props) => {
+            const {
+              handleSubmit,
+              handleBlur,
+            } = props;
+            return (
+              <form onSubmit={handleSubmit}>
+                <Email
+                  onBlur={handleBlur}
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange} //The Formik custom onChange
+                  />
+              </form>
+            );
+          }}
+          </Formik>
+          
+      </div>
+    )
+  }
 ```
 
 # License

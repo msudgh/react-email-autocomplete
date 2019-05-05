@@ -25,12 +25,12 @@ export default class Email extends Component {
       // Set value and suggestion state by every change
       this.setState({ value: emailAddress, suggestion: suggest}, ()=>this.selectText())
       event.target.value = emailAddress;
-      this.props.customOnChange(event)
+      this.props.onChange(event)
     } else {
       // Update value state plus suggested text
       this.setState({ value: emailAddress + suggest, suggestion: suggest}, ()=>this.selectText())
       event.target.value = emailAddress + suggest
-      this.props.customOnChange(event)
+      this.props.onChange(event)
     }
   }
   selectText(){
