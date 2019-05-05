@@ -23,14 +23,23 @@ export default class Email extends Component {
 
     if (typeof suggest === 'undefined' || suggest.length < 1) {
       // Set value and suggestion state by every change
-      this.setState({ value: emailAddress, suggestion: suggest })
+      this.setState({ value: emailAddress, suggestion: suggest}, ()=>this.selectText())
       event.target.value = emailAddress;
       this.props.customOnChange(event)
     } else {
       // Update value state plus suggested text
-      this.setState({ value: emailAddress + suggest, suggestion: suggest })
+      this.setState({ value: emailAddress + suggest, suggestion: suggest}, ()=>this.selectText())
       event.target.value = emailAddress + suggest
       this.props.customOnChange(event)
+    }
+  }
+  selectText(){
+    if (typeof this.state.suggestion === 'undefined' || this.state.suggestion.length < 1) {
+      return false;
+    } else {
+      let startPos = this.state.value.indexOf(this.state.suggestion)
+      let endPos = startPos + this.state.suggestion.length
+      this.textHandler.setSelectionRange(startPos, endPos)
     }
   }
   getSuggest(event) {
@@ -38,17 +47,8 @@ export default class Email extends Component {
     if (protectedKeyCodes.indexOf(event.keyCode) >= 0) {
       return;
     }
-
     if (event.keyCode === 8) {
       this.setState({ value: event.target.value.replace(this.state.suggestion, '') })
-    } else {
-      if (typeof this.state.suggestion === 'undefined' || this.state.suggestion.length < 1) {
-        return false;
-      } else {
-        let startPos = this.state.value.indexOf(this.state.suggestion)
-        let endPos = startPos + this.state.suggestion.length
-        this.textHandler.setSelectionRange(startPos, endPos)
-      }
     }
   }
   suggest(string) {

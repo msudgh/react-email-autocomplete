@@ -97,20 +97,37 @@
     _createClass(Email, [{
       key: 'handleChange',
       value: function handleChange(event) {
+        var _this2 = this;
+
         // Catch value of the input box by every change
         var emailAddress = event.target.value;
         var suggest = this.suggest(emailAddress);
 
         if (typeof suggest === 'undefined' || suggest.length < 1) {
           // Set value and suggestion state by every change
-          this.setState({ value: emailAddress, suggestion: suggest });
+          this.setState({ value: emailAddress, suggestion: suggest }, function () {
+            return _this2.selectText();
+          });
           event.target.value = emailAddress;
           this.props.customOnChange(event);
         } else {
           // Update value state plus suggested text
-          this.setState({ value: emailAddress + suggest, suggestion: suggest });
+          this.setState({ value: emailAddress + suggest, suggestion: suggest }, function () {
+            return _this2.selectText();
+          });
           event.target.value = emailAddress + suggest;
           this.props.customOnChange(event);
+        }
+      }
+    }, {
+      key: 'selectText',
+      value: function selectText() {
+        if (typeof this.state.suggestion === 'undefined' || this.state.suggestion.length < 1) {
+          return false;
+        } else {
+          var startPos = this.state.value.indexOf(this.state.suggestion);
+          var endPos = startPos + this.state.suggestion.length;
+          this.textHandler.setSelectionRange(startPos, endPos);
         }
       }
     }, {
@@ -120,17 +137,8 @@
         if (protectedKeyCodes.indexOf(event.keyCode) >= 0) {
           return;
         }
-
         if (event.keyCode === 8) {
           this.setState({ value: event.target.value.replace(this.state.suggestion, '') });
-        } else {
-          if (typeof this.state.suggestion === 'undefined' || this.state.suggestion.length < 1) {
-            return false;
-          } else {
-            var startPos = this.state.value.indexOf(this.state.suggestion);
-            var endPos = startPos + this.state.suggestion.length;
-            this.textHandler.setSelectionRange(startPos, endPos);
-          }
         }
       }
     }, {
@@ -192,13 +200,13 @@
     }, {
       key: 'render',
       value: function render() {
-        var _this2 = this;
+        var _this3 = this;
 
         return _react2.default.createElement(
           'div',
           { className: 'eac-wrapper' },
           _react2.default.createElement('input', { autocapitalize: 'none', type: 'text', inputMode: 'email', id: 'eac-input', name: this.props.name, placeholder: this.state.placeholder, onBlur: this.props.onBlur, className: this.state.class, value: this.state.value, onChange: this.handleChange, onKeyUp: this.getSuggest, ref: function ref(input) {
-              _this2.textHandler = input;
+              _this3.textHandler = input;
             } })
         );
       }
