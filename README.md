@@ -1,16 +1,17 @@
 # React Email Autocomplete
+
 An autocomplete React component for email fields inspired by [**`Auto-Email`**](https://github.com/chrisyuska/auto-email) JQuery plugin
 
-## Todo
-  - [✔] Improve the speed and performance 
+## Usage
 
-# Usage
 To use this component, you should install it by npm:
+
 ```bash
-$ npm install react-email-autocomplete --save-dev
+npm install react-email-autocomplete --save-dev
 ```
 
 And then use the component like bellow example(Bootstrap control):
+
 ```javascript
 import React, { Component } from 'react';
 import Email from 'react-email-autocomplete';
@@ -30,6 +31,7 @@ export default App;
 ```
 
 Also you can pass a list as your custom domains:
+
 ```javascript
 class App extends Component {
   render() {
@@ -43,6 +45,7 @@ class App extends Component {
   }
 }
 ```
+
 If you want to use it with [Formik](https://jaredpalmer.com/formik/docs/api/formik) you just need to add the *onChange* prop
 
 ```javascript
@@ -50,7 +53,7 @@ class App extends Component {
   render() {
     return (
       <div className="form-group">
-        <label htmlFor="eac-input">Email address</label> 
+        <label htmlFor="eac-input">Email address</label>
         <Formik>
           {(props) => {
             const {
@@ -68,12 +71,12 @@ class App extends Component {
               </form>
             );
           }}
-          </Formik>
-          
+        </Formik>
       </div>
     )
   }
 ```
 
 # License
+
 This software is released under the [**`MIT License`**](https://msudgh.mit-license.org/).
