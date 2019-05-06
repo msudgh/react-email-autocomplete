@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react'], factory);
+    define(['exports', 'react', './constants'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'));
+    factory(exports, require('react'), require('./constants'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react);
+    factory(mod.exports, global.react, global.constants);
     global.index = mod.exports;
   }
-})(this, function (exports, _react) {
+})(this, function (exports, _react, _constants) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -81,11 +81,14 @@
 
       var _this = _possibleConstructorReturn(this, (Email.__proto__ || Object.getPrototypeOf(Email)).call(this, props));
 
+      var updatedEmailServicesList = _constants.emailServicesDomains;
+      Array.prototype.push.apply(updatedEmailServicesList, props.domains && Array.isArray(props.domains) ? props.domains : []);
+
       _this.state = {
         placeholder: props.placeholder,
         class: props.className,
         value: '',
-        domains: props.domains ? props.domains : ['yahoo.com', 'hotmail.com', 'gmail.com', 'me.com', 'aol.com', 'mac.com', 'live.com', 'googlemail.com', 'msn.com', 'yahoo.com', 'facebook.com', 'verizon.net', 'outlook.com', 'icloud.com'], // Include important mail services
+        domains: updatedEmailServicesList,
         suggestion: ''
       };
 
@@ -110,12 +113,15 @@
           });
           event.target.value = emailAddress;
         } else {
+          var updatedEmailAddr = '' + emailAddress + suggest;
+
           // Update value state plus suggested text
-          this.setState({ value: emailAddress + suggest, suggestion: suggest }, function () {
+          this.setState({ value: updatedEmailAddr, suggestion: suggest }, function () {
             return _this2.selectText();
           });
           event.target.value = emailAddress + suggest;
         }
+
         if (this.props.onChange) {
           this.props.onChange(event);
         }
@@ -134,8 +140,7 @@
     }, {
       key: 'getSuggest',
       value: function getSuggest(event) {
-        var protectedKeyCodes = [9, 17, 18, 35, 36, 37, 38, 39, 40, 45];
-        if (protectedKeyCodes.indexOf(event.keyCode) >= 0) {
+        if (_constants.protectedKeyCodes.indexOf(event.keyCode) >= 0) {
           return;
         }
         if (event.keyCode === 8) {
@@ -206,7 +211,7 @@
         return _react2.default.createElement(
           'div',
           { className: 'eac-wrapper' },
-          _react2.default.createElement('input', { autocapitalize: 'none', type: 'text', inputMode: 'email', id: 'eac-input', name: this.props.name, placeholder: this.state.placeholder, onBlur: this.props.onBlur, className: this.state.class, value: this.state.value, onChange: this.handleChange, onKeyUp: this.getSuggest, ref: function ref(input) {
+          _react2.default.createElement('input', { autoCapitalize: 'none', type: 'text', inputMode: 'email', id: 'eac-input', name: this.props.name, placeholder: this.state.placeholder, onBlur: this.props.onBlur, className: this.state.class, value: this.state.value, onChange: this.handleChange, onKeyUp: this.getSuggest, ref: function ref(input) {
               _this3.textHandler = input;
             } })
         );
