@@ -109,13 +109,14 @@
             return _this2.selectText();
           });
           event.target.value = emailAddress;
-          this.props.onChange(event);
         } else {
           // Update value state plus suggested text
           this.setState({ value: emailAddress + suggest, suggestion: suggest }, function () {
             return _this2.selectText();
           });
           event.target.value = emailAddress + suggest;
+        }
+        if (this.props.onChange) {
           this.props.onChange(event);
         }
       }
