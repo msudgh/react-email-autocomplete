@@ -1,6 +1,10 @@
 # React Email Autocomplete
 
-An autocomplete React component for email fields inspired by [**`Auto-Email`**](https://github.com/chrisyuska/auto-email) JQuery plugin
+An autocomplete React component for email fields inspired by [**`Auto-Email`**](https://github.com/chrisyuska/auto-email) JQuery plugin.
+
+## Demo
+
+[Here](https://msudgh.github.io/react-email-autocomplete) you can see component demo and functionality.
 
 ## Usage
 
