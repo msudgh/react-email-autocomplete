@@ -1,6 +1,6 @@
 {
   "name": "react-email-autocomplete",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Autocomplete React component for email fields",
   "repository": {
     "type": "git",
