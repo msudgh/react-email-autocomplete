@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Autocomplete React component for email fields / https://github.com/msudgh/react-email-autocomplete">
+  <title>React Email Autocomplete</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #f0f0f5;
+      font-family: 'Roboto';
+      color: #999;
+      font-size: 18px;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 4px;
+    }
+    
+    .description {
+      font-size: .9em;
+    }
+
+    hr {
+      width: 48px;
+      border: none;
+      background-color: #bbb;
+      height: 1px;
+      margin-top: 32px;
+      margin-bottom: 30px;
+    }
+    
+    .hint {
+      font-style: italic;
+      font-size: 15px;
+      padding-top: 16px;
+      color: #999;
+    }
+    
+    .container {
+      max-width: 50em;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+    }
+    
+    .autocomplete {
+      position: relative;
+    }
+    
+    .autocomplete-input {
+      font-family: 'Roboto';
+      padding: 1em;
+      border: 1px solid transparent;
+      box-shadow: 0 0 0 #ddd;
+      transition: all 0.35s ease-out;
+      color: #999;
+      font-size: 18px;
+      width: 20em;
+    }
+    .autocomplete-input:focus {
+      border-color: #ddd;
+      outline: none;
+      box-shadow: 0 0 10px #ddd;
+    }
+    ul.socials {
+      display: flex;
+      margin-top: 10px
+    }
+    ul.socials li {
+      list-style: none;
+    }
+    ul.socials li a {
+      margin: 0 4px;
+    }
+    ul.socials li a, ul.socials li a img {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+  <script src="./index.js"></script>
+  <script type="text/babel">
+    class Demo extends React.Component {
+      render() {
+        return (
+          <section class="container">
+            <h1>React Email Autocomplete</h1>
+            <p class="description">Autocomplete React component for email fields</p>
+            <ul class="socials">
+              <li><a href="https://github.com/msudgh/react-email-autocomplete" title="GitHub stars"><img alt="GitHub stars" src="https://img.shields.io/github/stars/msudgh/react-email-autocomplete.svg?style=social" /></a></li>
+              <li><a href="https://www.npmjs.com/package/react-email-autocomplete" title="NPM Version"><img alt="NPM Version" src="https://img.shields.io/npm/v/react-email-autocomplete.svg?style=popout" /></a></li>
+              <li><a href="https://github.com/msudgh/react-email-autocomplete/LICENSE" title="License | MIT"><img alt="License | MIT" src="https://img.shields.io/npm/l/react-email-autocomplete.svg?style=popout" /></a></li>
+            </ul>
+            <hr />
+            <div class="autocomplete">
+              <Email type="email" className="autocomplete-input"  placeholder="Enter email" />
+            </div>
+            <p class="hint">Hint: Try typing "John@gmail" into the input</p>
+          </section>
+        );
+      }
+    }
+    ReactDOM.render(
+      <Demo />,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
