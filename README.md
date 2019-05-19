@@ -1,5 +1,7 @@
 # React Email Autocomplete
 
+![GitHub stars](https://img.shields.io/github/stars/msudgh/react-email-autocomplete.svg?style=social) ![NPM Version](https://img.shields.io/npm/v/react-email-autocomplete.svg?style=popout) ![License | MIT](https://img.shields.io/npm/l/react-email-autocomplete.svg?style=popout") ![Travis CI Master branch](https://img.shields.io/travis/msudgh/react-email-autocomplete/master.svg?style=popout)
+
 An autocomplete React component for email fields inspired by [**`Auto-Email`**](https://github.com/chrisyuska/auto-email) JQuery plugin.
 
 ## Demo
