@@ -42,7 +42,7 @@ export default class Email extends Component {
     }
   }
   selectText () {
-    if (typeof this.state.suggestion !== 'undefined' || this.state.suggestion.length > 1) {
+    if (typeof this.state.suggestion !== 'undefined' && this.state.suggestion.length > 0) {
       let startPos = this.state.value.indexOf(this.state.suggestion)
       let endPos = startPos + this.state.suggestion.length
       this.textHandler.setSelectionRange(startPos, endPos)
