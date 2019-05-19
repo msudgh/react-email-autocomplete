@@ -8,13 +8,11 @@ export const emailServicesDomains = [
   'live.com',
   'googlemail.com',
   'msn.com',
-  'yahoo.com',
   'facebook.com',
   'verizon.net',
   'outlook.com',
   'icloud.com',
   'rediffmail.com',
-  'icloud.com',
   'zohomail.in',
   'zoho.com',
   'mail.com'
