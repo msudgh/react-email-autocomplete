@@ -8,11 +8,14 @@ export const emailServicesDomains = [
   'live.com',
   'googlemail.com',
   'msn.com',
-  'yahoo.com',
   'facebook.com',
   'verizon.net',
   'outlook.com',
-  'icloud.com'
+  'icloud.com',
+  'rediffmail.com',
+  'zohomail.in',
+  'zoho.com',
+  'mail.com'
 ]
 
 export const protectedKeyCodes = [9, 17, 18, 35, 36, 37, 38, 39, 40, 45]
