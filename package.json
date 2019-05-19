@@ -28,7 +28,7 @@
     "watch": "npm-watch",
     "deploy": "gh-pages -d build",
     "build": "rollup -c -o index.js",
-    "test": ""
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -70,6 +70,8 @@
     ]
   },
   "standard": {
-    "env": [ "jest" ]
+    "env": [
+      "jest"
+    ]
   }
 }
