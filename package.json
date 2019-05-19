@@ -27,21 +27,29 @@
     "prepublish": "npm run build",
     "watch": "npm-watch",
     "deploy": "gh-pages -d build",
-    "build": "rollup -c -o index.js"
+    "build": "rollup -c -o index.js",
+    "test": ""
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@types/jest": "^24.0.13",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "enzyme-to-json": "^3.3.5",
     "gh-pages": "^2.0.1",
+    "jest": "^24.8.0",
     "jsdom": "^8.1.0",
     "nodemon": "^1.11.0",
     "npm-watch": "^0.1.6",
     "react": "^16.4.0",
     "react-addons-test-utils": "^15.0.0",
+    "react-dom": "^16.8.6",
     "rollup": "^1.11.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-uglify": "^6.0.2"
@@ -52,5 +60,16 @@
   },
   "dependencies": {
     "@babel/runtime-corejs2": "^7.0.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "standard": {
+    "env": [ "jest" ]
   }
 }

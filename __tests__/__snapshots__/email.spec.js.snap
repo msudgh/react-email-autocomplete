@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Email Component should render correctly without props 1`] = `
+<div
+  className="rea-wrapper"
+>
+  <input
+    autoCapitalize="none"
+    id="rea-input"
+    inputMode="email"
+    onChange={[Function]}
+    onKeyUp={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;
