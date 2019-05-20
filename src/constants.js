@@ -15,7 +15,9 @@ export const emailServicesDomains = [
   'rediffmail.com',
   'zohomail.in',
   'zoho.com',
-  'mail.com'
+  'mail.com',
+  'protonmail.com',
+  'yandex.com'
 ]
 
 export const protectedKeyCodes = [9, 17, 18, 35, 36, 37, 38, 39, 40, 45]
