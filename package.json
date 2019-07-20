@@ -28,38 +28,44 @@
     "watch": "npm-watch",
     "deploy": "gh-pages -d build",
     "build": "rollup -c -o index.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "standard --verbose | snazzy",
+    "lint:fix": "standard --fix --verbose | snazzy",
+    "formatter": "prettier --write --config .prettierrc src/**/*.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@types/jest": "^24.0.13",
+    "@types/jest": "^24.0.15",
     "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
     "gh-pages": "^2.0.1",
     "jest": "^24.8.0",
-    "jsdom": "^8.1.0",
-    "nodemon": "^1.11.0",
-    "npm-watch": "^0.1.6",
+    "jsdom": "^15.1.1",
+    "nodemon": "^1.19.1",
+    "npm-watch": "^0.6.0",
+    "prettier": "^1.18.2",
     "react": "^16.4.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^16.8.6",
-    "rollup": "^1.11.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-uglify": "^6.0.2",
+    "standard": "^13.0.2"
   },
   "peerDependencies": {
     "react": "~0.14.8 || ^16.4.0",
     "react-dom": "~0.14.8 || ^16.4.0"
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "^7.0.0"
+    "@babel/runtime-corejs2": "^7.5.5",
+    "snazzy": "^8.0.0"
   },
   "jest": {
     "setupFiles": [
@@ -72,6 +78,10 @@
   "standard": {
     "env": [
       "jest"
+    ],
+    "parser": "babel-eslint",
+    "ignore": [
+      "index.js"
     ]
   }
 }
