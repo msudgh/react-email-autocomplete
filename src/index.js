@@ -78,29 +78,29 @@ export default class Email extends Component {
   }
 
   componentDidMount() {
-    const { domains } = this.props
+    const { domains, value } = this.props
     if (typeof domains === 'string') {
       console.error('domains props should be array not string!')
       this.setState({
         valid: false
       })
     }
+
+    this.setState({
+      value
+    })
   }
   render() {
-    const { placeholder, className, name, onBlur, domains } = this.props
+    const props = this.props
     const { value, valid } = this.state
 
     return valid ? (
       <div className="rea-wrapper">
         <input
+          {...props}
           autoCapitalize="none"
           type="text"
           inputMode="email"
-          id="rea-input"
-          name={name}
-          placeholder={placeholder}
-          onBlur={onBlur}
-          className={className}
           value={value}
           onChange={this.handleChange}
           onKeyUp={this.getSuggest}
