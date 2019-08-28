@@ -87,7 +87,7 @@ export default class Email extends Component {
     }
 
     this.setState({
-      value
+      value.trim().replace(/\s+/g, " ")
     })
   }
   render() {
