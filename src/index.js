@@ -20,7 +20,7 @@ export default class Email extends Component {
     return pieces.join(what) + replacement + lastPiece
   }
   handleChange(event) {
-    const { value: emailAddress } = event.target
+    const { value: emailAddress } = event.target.trim().replace(/\s+/g, ' ')
     const { onChange } = this.props
     const suggest = this.suggest(emailAddress)
 
