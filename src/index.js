@@ -90,26 +90,51 @@ export default class Email extends Component {
       value
     })
   }
+  
+  handleButtonClick = e => {
+    if (this.props.value.length) {
+      this.props.removeInput(e.target.name);
+    }
+  };
+
+  isInputRequired() {
+    if (this.props.value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     const props = this.props
     const { value, valid } = this.state
 
     return valid ? (
-      <div className="rea-wrapper">
+      <div className="input-group mb-3">
         <input
-          {...props}
-          autoCapitalize="none"
-          type="email"
-          inputMode="email"
-          value={value}
-          onChange={this.handleChange}
-          onKeyUp={this.getSuggest}
-          ref={input => {
-            this.textHandler = input
-          }}
-          required={this.props.isRequired}
-        />
-      </div>
+            {...props}
+            autoCapitalize="none"
+            type="email"
+            inputMode="email"
+            value={value}
+            onChange={this.handleChange}
+            onKeyUp={this.getSuggest}
+            ref={input => {
+              this.textHandler = input
+            }}
+            required={this.isInputRequired()}
+          />
+        <div className="input-group-append">
+          <button
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={this.handleButtonClick}
+            name={this.props.index}
+          >
+            -
+          </button>
+        </div>
+       </div>
     ) : (
       'Unable to render component! Please, Check out developer tools of your browser.'
     )
@@ -117,6 +142,5 @@ export default class Email extends Component {
 }
 
 Email.defaultProps = {
-  domains: emailServicesDomains,
-  isRequired: false
+  domains: emailServicesDomains
 }
