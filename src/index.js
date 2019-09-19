@@ -99,7 +99,7 @@ export default class Email extends Component {
         <input
           {...props}
           autoCapitalize="none"
-          type="text"
+          type="email"
           inputMode="email"
           value={value}
           onChange={this.handleChange}
@@ -107,6 +107,7 @@ export default class Email extends Component {
           ref={input => {
             this.textHandler = input
           }}
+          required={this.props.isRequired}
         />
       </div>
     ) : (
@@ -116,5 +117,6 @@ export default class Email extends Component {
 }
 
 Email.defaultProps = {
-  domains: emailServicesDomains
+  domains: emailServicesDomains,
+  isRequired: false
 }
