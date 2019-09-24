@@ -1,6 +1,6 @@
 {
   "name": "react-email-autocomplete",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Autocomplete React component for email fields",
   "repository": {
     "type": "git",
@@ -34,37 +34,37 @@
     "formatter": "prettier --write --config .prettierrc src/**/*.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "@types/jest": "^24.0.15",
-    "babel-jest": "^24.8.0",
+    "@types/jest": "^24.0.18",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.3.5",
-    "gh-pages": "^2.0.1",
-    "jest": "^24.8.0",
+    "enzyme-to-json": "^3.4.0",
+    "gh-pages": "^2.1.1",
+    "jest": "^24.9.0",
     "jsdom": "^15.1.1",
-    "nodemon": "^1.19.1",
+    "nodemon": "^1.19.2",
     "npm-watch": "^0.6.0",
     "prettier": "^1.18.2",
-    "react": "^16.4.0",
+    "react": "^16.9.0",
     "react-addons-test-utils": "^15.0.0",
-    "react-dom": "^16.8.6",
-    "rollup": "^1.17.0",
+    "react-dom": "^16.9.0",
+    "rollup": "^1.21.4",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-uglify": "^6.0.2",
-    "standard": "^13.0.2"
+    "rollup-plugin-uglify": "^6.0.3",
+    "standard": "^14.3.1"
   },
   "peerDependencies": {
     "react": "~0.14.8 || ^16.4.0",
     "react-dom": "~0.14.8 || ^16.4.0"
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "^7.5.5",
+    "@babel/runtime-corejs2": "^7.6.2",
     "snazzy": "^8.0.0"
   },
   "jest": {

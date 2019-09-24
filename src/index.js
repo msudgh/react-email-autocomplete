@@ -101,7 +101,7 @@ export default class Email extends Component {
           autoCapitalize="none"
           type="text"
           inputMode="email"
-          value={value}
+          value={value || ''}
           onChange={this.handleChange}
           onKeyUp={this.getSuggest}
           ref={input => {
@@ -110,8 +110,8 @@ export default class Email extends Component {
         />
       </div>
     ) : (
-      'Unable to render component! Please, Check out developer tools of your browser.'
-    )
+        'Unable to render component! Please, Check out developer tools of your browser.'
+      )
   }
 }
 
