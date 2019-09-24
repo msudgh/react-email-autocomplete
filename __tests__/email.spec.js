@@ -15,7 +15,7 @@ describe('Email Component', () => {
 
     // enter an email address
     component
-      .find('input#rea-input')
+      .find('input')
       .simulate('change', { target: { value: 'test@gm' } })
 
     expect(component.instance().state.value).toEqual('test@gmail.com')
@@ -25,7 +25,7 @@ describe('Email Component', () => {
 
     // enter an email address
     component
-      .find('input#rea-input')
+      .find('input')
       .simulate('change', { target: { value: 'test@je' } })
 
     expect(component.instance().state.value).toEqual('test@jest.com')
