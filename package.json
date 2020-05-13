@@ -1,6 +1,6 @@
 {
   "name": "react-email-autocomplete",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Autocomplete React component for email fields",
   "repository": {
     "type": "git",
@@ -29,43 +29,40 @@
     "deploy": "gh-pages -d build",
     "build": "rollup -c -o index.js",
     "test": "jest",
-    "lint": "standard --verbose | snazzy",
-    "lint:fix": "standard --fix --verbose | snazzy",
     "formatter": "prettier --write --config .prettierrc src/**/*.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/preset-react": "^7.0.0",
-    "@types/jest": "^24.0.18",
-    "babel-jest": "^24.9.0",
-    "babel-loader": "^8.0.6",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@types/jest": "^25.2.2",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
+    "babel-loader": "^8.1.0",
     "babel-preset-react": "^6.24.1",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.4.0",
-    "gh-pages": "^2.1.1",
-    "jest": "^24.9.0",
-    "jsdom": "^15.1.1",
-    "nodemon": "^1.19.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
+    "gh-pages": "^2.2.0",
+    "jest": "^26.0.1",
+    "jsdom": "^16.2.2",
+    "nodemon": "^2.0.3",
     "npm-watch": "^0.6.0",
-    "prettier": "^1.18.2",
-    "react": "^16.9.0",
-    "react-addons-test-utils": "^15.0.0",
-    "react-dom": "^16.9.0",
-    "rollup": "^1.21.4",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-uglify": "^6.0.3",
-    "standard": "^14.3.1"
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.13.1",
+    "rollup": "^2.10.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-uglify": "^6.0.4"
   },
   "peerDependencies": {
     "react": "~0.14.8 || ^16.4.0",
     "react-dom": "~0.14.8 || ^16.4.0"
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "^7.6.2",
-    "snazzy": "^8.0.0"
+    "@babel/runtime-corejs2": "^7.9.6"
   },
   "jest": {
     "setupFiles": [
@@ -73,15 +70,6 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
-  },
-  "standard": {
-    "env": [
-      "jest"
-    ],
-    "parser": "babel-eslint",
-    "ignore": [
-      "index.js"
     ]
   }
 }
