@@ -1,120 +1,108 @@
-import React, { Component } from 'react'
-import { emailServicesDomains, protectedKeyCodes } from './constants'
+import React, { useState, useRef } from 'react';
+import { emailServicesDomains, protectedKeyCodes } from './constants';
 
-export default class Email extends Component {
-  constructor(props) {
-    super(props)
+const Email = (props) => {
+  const [value, setValue] = useState('');
+  const [suggestion, setSuggestion] = useState('');
+  const [valid, setValid] = useState(true);
+  const inputRef = useRef();
 
-    this.state = {
-      value: '',
-      suggestion: '',
-      valid: true
-    }
+  const replaceLast = (value, what, replacement) => {
+    let pieces = value.split(what);
+    let lastPiece = pieces.pop();
+    return pieces.join(what) + replacement + lastPiece;
+  };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.getSuggest = this.getSuggest.bind(this)
-  }
-  replaceLast(value, what, replacement) {
-    let pieces = value.split(what)
-    let lastPiece = pieces.pop()
-    return pieces.join(what) + replacement + lastPiece
-  }
-  handleChange(event) {
-    const { value: emailAddress } = event.target
-    const { onChange } = this.props
-    const suggest = this.suggest(emailAddress)
+  const handleChange = (event) => {
+    const { value: emailAddress } = event.target;
+    const suggest = suggestFormatter(emailAddress);
 
     if (typeof suggest === 'undefined' || suggest.length < 1) {
-      this.setState({ value: emailAddress, suggestion: suggest }, () =>
-        this.selectText()
-      )
+      setValue(emailAddress);
+      setSuggestion(suggest);
+      selectText();
     } else {
-      this.setState(
-        { value: `${emailAddress}${suggest}`, suggestion: suggest },
-        () => this.selectText()
-      )
+      setValue(`${emailAddress}${suggest}`);
+      setSuggestion(suggest);
+      selectText();
     }
 
-    if (onChange) {
-      onChange(event)
-    }
-  }
-  selectText() {
-    const { suggestion, value } = this.state
+    props.onChange && props.onChange(event);
+  };
 
+  const selectText = () => {
     if (typeof suggestion !== 'undefined' && suggestion.length > 0) {
-      let startPos = value.lastIndexOf(suggestion)
-      let endPos = startPos + suggestion.length
-      this.textHandler.setSelectionRange(startPos, endPos)
+      let startPos = value.lastIndexOf(suggestion);
+      let endPos = startPos + suggestion.length;
+
+      inputRef.setSelectionRange(startPos, endPos);
     }
-  }
-  getSuggest(event) {
-    if (protectedKeyCodes.indexOf(event.keyCode) >= 0) return
-    const { suggestion } = this.state
-    const { value } = event.target
+  };
+
+  const getSuggest = (event) => {
+    if (protectedKeyCodes.indexOf(event.keyCode) >= 0) return;
+    const { value } = event.target;
 
     if (event.keyCode === 8) {
-      this.setState({
-        value: this.replaceLast(value, suggestion, '')
-      })
+      setValue(replaceLast(value, suggestion, ''));
     }
-  }
-  suggest(string) {
-    let strArr = string.split('@')
-    if (strArr.length - 1 !== 0) {
-      string = strArr.pop()
-    } else return
+  };
 
-    const { domains } = this.props
+  const suggestFormatter = (string) => {
+    let strArr = string.split('@');
 
-    let match =
-      domains
-        .filter(domain => {
-          return domain.indexOf(string) === 0
-        })
-        .shift() || ''
+    if (strArr.length > 0) {
+      string = strArr.pop();
 
-    return match.replace(string, '')
-  }
+      const { domains } = props;
 
-  componentDidMount() {
-    const { domains, value } = this.props
+      let match =
+        domains
+          .filter((domain) => {
+            return domain.indexOf(string) === 0;
+          })
+          .shift() || '';
+
+      return match.replace(string, '');
+    }
+
+    return;
+  };
+
+  useEffect(() => {
+    const { domains, value } = props;
     if (typeof domains === 'string') {
-      console.error('domains props should be array not string!')
-      this.setState({
-        valid: false
-      })
+      throw new Error('Domains props should be array not string!');
+      setValid(false);
     }
 
-    this.setState({
-      value
-    })
-  }
-  render() {
-    const props = this.props
-    const { value, valid } = this.state
+    setValue(value);
+  }, []);
 
-    return valid ? (
-      <div className="rea-wrapper">
-        <input
-          {...props}
-          autoCapitalize="none"
-          type="text"
-          inputMode="email"
-          value={value || ''}
-          onChange={this.handleChange}
-          onKeyUp={this.getSuggest}
-          ref={input => {
-            this.textHandler = input
-          }}
-        />
-      </div>
-    ) : (
-        'Unable to render component! Please, Check out developer tools of your browser.'
-      )
+  if (valid) {
+    throw new Error(
+      'Unable to render component! Please, Check out developer tools of your browser.'
+    );
   }
-}
+
+  return (
+    <div className="rea-wrapper">
+      <input
+        {...props}
+        autoCapitalize="none"
+        type="text"
+        inputMode="email"
+        value={value || ''}
+        onChange={handleChange}
+        onKeyUp={getSuggest}
+        ref={inputRef}
+      />
+    </div>
+  );
+};
 
 Email.defaultProps = {
-  domains: emailServicesDomains
-}
+  domains: emailServicesDomains,
+};
+
+export default Email;

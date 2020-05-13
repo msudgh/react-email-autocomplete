@@ -17,7 +17,7 @@ export const emailServicesDomains = [
   'zoho.com',
   'mail.com',
   'protonmail.com',
-  'yandex.com'
-]
+  'yandex.com',
+];
 
-export const protectedKeyCodes = [9, 17, 18, 35, 36, 37, 38, 39, 40, 45]
+export const protectedKeyCodes = [9, 17, 18, 35, 36, 37, 38, 39, 40, 45];
