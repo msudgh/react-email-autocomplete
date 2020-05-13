@@ -1,19 +1,18 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=759670
-	// for the documentation about the jsconfig.json format
-	"compilerOptions": {
-		"target": "ES6",
-		"module": "commonjs",
-		"allowSyntheticDefaultImports": true
-	},
-	"exclude": [
-		"node_modules",
-		"bower_components",
-		"jspm_packages",
-		"tmp",
-		"temp"
-	],
-	"files": [
-		"src/"
-	]
+  // See https://go.microsoft.com/fwlink/?LinkId=759670
+  // for the documentation about the jsconfig.json format
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/jsconfig.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "node_modules",
+    "bower_components",
+    "jspm_packages",
+    "tmp",
+    "temp"
+  ],
+  "files": ["src/"]
 }
