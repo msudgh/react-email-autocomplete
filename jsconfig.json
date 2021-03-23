@@ -13,6 +13,5 @@
     "jspm_packages",
     "tmp",
     "temp"
-  ],
-  "files": ["src/"]
+  ]
 }
