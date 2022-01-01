@@ -1,4 +1,4 @@
-import { terser } from "rollup-plugin-terser";
+import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
 
 const config = {
@@ -17,7 +17,7 @@ const config = {
     }),
     terser({
       output: {
-        comments: "all",
+        comments: 'all',
       },
     }),
   ],
