@@ -1,4 +1,4 @@
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
 
 const config = {
@@ -15,7 +15,11 @@ const config = {
     babel({
       exclude: 'node_modules/**',
     }),
-    uglify(),
+    terser({
+      output: {
+        comments: 'all',
+      },
+    }),
   ],
 };
 

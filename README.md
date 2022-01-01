@@ -26,10 +26,10 @@ class App extends Component {
   render() {
     return (
       <div className="form-group">
-        <label htmlFor="eac-input">Email address</label> 
-        <Email className="form-control" placeholder="Enter email"/>
+        <label htmlFor="eac-input">Email address</label>
+        <Email className="form-control" placeholder="Enter email" />
       </div>
-    )
+    );
   }
 }
 
@@ -41,18 +41,27 @@ Also you can pass a list as your custom domains:
 ```javascript
 class App extends Component {
   render() {
-    const customDomains = ['yourdomain.com', 'yourdomain2.com', 'gmail.com', 'yahoo.com']
+    const customDomains = [
+      'yourdomain.com',
+      'yourdomain2.com',
+      'gmail.com',
+      'yahoo.com',
+    ];
     return (
       <div className="form-group">
-        <label htmlFor="eac-input">Email address</label> 
-        <Email className="form-control" placeholder="Enter email" domains={customDomains}/>
+        <label htmlFor="eac-input">Email address</label>
+        <Email
+          className="form-control"
+          placeholder="Enter email"
+          domains={customDomains}
+        />
       </div>
-    )
+    );
   }
 }
 ```
 
-If you want to use it with [Formik](https://jaredpalmer.com/formik/docs/api/formik) you just need to add the *onChange* prop
+If you want to use it with [Formik](https://jaredpalmer.com/formik/docs/api/formik) you just need to add the _onChange_ prop
 
 ```javascript
 class App extends Component {
