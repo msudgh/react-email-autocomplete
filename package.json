@@ -32,6 +32,11 @@
     "formatter": "prettier --write --config .prettierrc '**/*.{md,js,yaml,yml}'",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.+(md|js|yaml|yml)": [
+      "npm run formatter"
+    ]
+  },
   "devDependencies": {
     "@babel/cli": "7.16.7",
     "@babel/core": "7.16.7",
@@ -49,6 +54,7 @@
     "husky": "^7.0.4",
     "jest": "27.4.5",
     "jsdom": "19.0.0",
+    "lint-staged": "^12.1.4",
     "nodemon": "2.0.15",
     "npm-watch": "0.11.0",
     "prettier": "2.5.1",
